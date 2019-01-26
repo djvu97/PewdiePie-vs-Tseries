@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="odometer-theme-minimal.css" />
+    <script src="odometer.js"></script>
+    <title>Document</title>
+    <script type="text/javascript">
+        function myFunction () {
+            const Http = new XMLHttpRequest();
+            let el1 = document.getElementById('odometer1');
+            let el2 = document.getElementById('odometer2');
+            var response;
+            const url1='https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=PewDiePie&key=AIzaSyAqKP_8nYNJrkQ8nU5qhl533tSTAOox7CM';
+            Http.open("GET", url1,true);
+            Http.send();
+            Http.onreadystatechange=(e)=>{
+                response = JSON.parse(Http.responseText);
+                el1.innerHTML=response['items'][0]['statistics']['subscriberCount']
+                const url2='https://www.googleapis.com/youtube/v3/channels?part=statistics&forUsername=tseries&key=AIzaSyAqKP_8nYNJrkQ8nU5qhl533tSTAOox7CM';
+                Http.open("GET", url2,true);
+                Http.send();
+                Http.onreadystatechange=(e)=>{
+                    response = JSON.parse(Http.responseText);
+                    el2.innerHTML=response['items'][0]['statistics']['subscriberCount']
+                    }
+            }
+        }
+        var interval = setInterval(function () { myFunction(); }, 5000);
+    </script>
+</head>
+<body style="-webkit-app-region: drag">
+    <div style="text-align: center">PewDiePie</div>
+    <div id="odometer1" class="odometer" style="font-size:70px;" ></div>
+    <div style="text-align: center">VS</div>
+    <div style="text-align: center">Tseries</div>
+    <div id="odometer2" class="odometer" style="font-size:70px;" ></div>
+</body>
+</html>

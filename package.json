@@ -1,0 +1,22 @@
+{
+  "name": "subscriber-count",
+  "version": "1.0.0",
+  "description": "electronjs app for live subscriber count",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "install-app-deps",
+    "start": "electron index.js",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "author": "Hiranyey Gajbhiye",
+  "license": "MIT",
+  "win": {
+    "target": "squirrel",
+    "icon":"icon.png"
+  },
+  "devDependencies": {
+    "electron": "4.0.2",
+    "electron-builder": "^20.38.5"
+  }
+}
