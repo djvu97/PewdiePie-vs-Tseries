@@ -1,4 +1,4 @@
 # PewdiePie v/s Tseries
-Installation:-
-npm install 
-npm start
+Installation:-  
+npm install   
+npm start  
